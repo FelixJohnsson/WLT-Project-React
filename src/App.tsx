@@ -1,11 +1,22 @@
 import React from 'react';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import { Login } from './Pages/Login'
+import { Register } from './Pages/Register'
 
-function App() {
+const App = () => {
+
   return (
-    <div>
-      <h1> WLT </h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={ <Login /> } />
+        <Route path="/register" element={ <Register /> } />
+      </Routes>
+    </Router>
   )
 }
 
