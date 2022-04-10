@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom"
 import { Input } from '@mui/material'
 import Button from '@mui/material/Button'
 import './Login.css'
 
 export const Login = () => {
+	const navigate = useNavigate()
 	const serverURL = 'http://localhost:5000'
 
 	const [username, setUsername] = useState('')
@@ -23,7 +25,7 @@ export const Login = () => {
 		})
 		.then(res => res.json())
 		.then((data) => {
-			if(data.status === 200) return window.location.href = '/home'
+			if(data.status === 200) return navigate("/")
 			else{
 				setError(<i id="error-message-shown">{data.message}</i>)
 				setPassword('')

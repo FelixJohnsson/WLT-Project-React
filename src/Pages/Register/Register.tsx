@@ -1,17 +1,18 @@
 import React, {useState} from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import { Input } from '@mui/material'
 import Button from '@mui/material/Button'
 import './register.css'
 
 export const Register = () => {
-	let navigate = useNavigate();
+	const navigate = useNavigate()
+	const serverURL = 'http://localhost:5000'
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState(<i id="error-message-hidden">Error message</i>)
 
 	const handleRegister = () => {
-		fetch('http://localhost:5000/add_user', {
+		fetch(`${serverURL}/add_user`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

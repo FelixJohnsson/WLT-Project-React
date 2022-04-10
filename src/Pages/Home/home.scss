@@ -1,0 +1,29 @@
+#category-selector-div{
+	display: flex;
+	flex-direction: row;
+
+	.category-card-selected{
+		height: 160px;
+		width: 25%;
+		background-color: #fefffe;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+
+		img{
+			height: 50%;
+		}
+	}
+	.category-card-unselected{
+		height: 160px;
+		width: 25%;
+		background-color: #f6f6f7;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+
+		img{
+			height: 50%;
+		}
+	}
+}
