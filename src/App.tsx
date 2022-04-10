@@ -5,9 +5,9 @@ import {
   Route,
   Link
 } from "react-router-dom"
-import './App.css'
 import { Login } from './Pages/Login'
 import { Register } from './Pages/Register'
+import { Home } from './Pages/Home'
 
 const App = () => {
 
@@ -16,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
+        <Route path="/home" element={ <Home /> } />
       </Routes>
     </Router>
   )
