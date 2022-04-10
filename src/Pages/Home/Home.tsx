@@ -5,14 +5,17 @@ import muscle from './muscle.png'
 import weightlifter from './weightlifter.png'
 import stationaryBike from './stationary-bike.png'
 import weights from './weights.png'
+import '@splidejs/react-splide/css'
 
-import Card from '@mui/material/Card';
-import Input from '@mui/material/Input';
+
+import Card from '@mui/material/Card'
+import Input from '@mui/material/Input'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 
 export const Home = () => {
 	return (
 		<div>
-			<h1>Know your progress ... </h1>
+			<h1> { '< Progress />' } </h1>
 			<div id="category-selector-div">
 				<div className="category-card-unselected">
 					<img src={gym} alt="Gym"></img>
@@ -39,7 +42,38 @@ export const Home = () => {
 					<p>Your progress</p>
 				</div>	
 			</div>
-
+			<Splide
+				options={ {
+					rewind: true,
+					width: '100%',
+					height: 300,
+					gap: '1rem',
+					type: 'loop',
+					perPage: 3,
+					focus: 'center',
+				} }
+				>
+				<SplideSlide>
+					<p>April 8th</p>
+					<i>No workout planned</i>
+				</SplideSlide>
+				<SplideSlide className="SplideSlide">
+					<p>April 9th</p>
+					<i>No workout planned</i>
+				</SplideSlide>
+				<SplideSlide>
+					<p>April 10th | Today</p>
+					<p>Chest workout planned</p>
+				</SplideSlide>
+				<SplideSlide>
+					<p>April 11th</p>
+					<p>Back workout planned</p>
+				</SplideSlide>
+				<SplideSlide>
+					<p>April 12th</p>
+					<i>No workout planned</i>
+				</SplideSlide>
+			</Splide>
 			<div id="next-workout-container">
 				<Card className="next-workout-card-selected">
 					<div className="next-workout-card-left">

@@ -1,3 +1,7 @@
+.SplideSlide {
+  background-color: #f6f6f6;
+}
+
 #category-selector-div {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -25,7 +25,7 @@ export const Login = () => {
 		})
 		.then(res => res.json())
 		.then((data) => {
-			if(data.status === 200) return navigate("/")
+			if(data.status === 200) return navigate("/home")
 			else{
 				setError(<i id="error-message-shown">{data.message}</i>)
 				setPassword('')
