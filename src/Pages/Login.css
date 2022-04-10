@@ -1,0 +1,50 @@
+h1 {
+  color: #dedede;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#login-div {
+  width: 90%;
+  height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  margin-top: 100px;
+}
+
+#login-div Button {
+  margin-top: 1rem;
+}
+
+#login-div Input {
+  width: 100%;
+  height: 50px;
+  margin-top: 2rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+#login-div #login-register-div {
+  margin-top: 1rem;
+}
+
+#login-div #login-register-div a {
+  text-decoration: none;
+  margin: 0 10px 0 10px;
+  color: #191414;
+}
+/*# sourceMappingURL=Login.css.map */
