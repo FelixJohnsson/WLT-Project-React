@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './home.css'
 import { TopNavigation } from '../../Components/TopNavigation'
+import { NewWorkout } from '../../Components/NewWorkout'
 
 import '@splidejs/react-splide/css'
 
@@ -13,7 +14,7 @@ export const Home = () => {
 	const [showingCatergory, setShowingCatergory] = useState('Next workout')
 
 	useEffect(() => {
-		if (showingCatergory === 'Your workouts' || showingCatergory === 'Edit workouts' || showingCatergory === 'Your progress') setShowSplide(false)
+		if (showingCatergory === 'Your workouts' || showingCatergory === 'Edit workouts' || showingCatergory === 'Your progress' || showingCatergory === 'New workout') setShowSplide(false)
 		if (showingCatergory === 'Next workout' || showingCatergory === 'Edit schedule') setShowSplide(true)
 	}, [showingCatergory])
 
@@ -58,7 +59,7 @@ export const Home = () => {
 				: null
 			}
 			<div id="main-output">
-				{showingCatergory}
+				{showingCatergory === 'New workout' ? <NewWorkout /> : null}
 			</div>
 
 		</div>
