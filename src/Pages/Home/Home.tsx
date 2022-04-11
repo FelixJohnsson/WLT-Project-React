@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './home.css'
 import { TopNavigation } from '../../Components/TopNavigation'
 
@@ -12,20 +12,25 @@ export const Home = () => {
 	const [showSplide, setShowSplide] = useState(true)
 	const [showingCatergory, setShowingCatergory] = useState('Next workout')
 
+	useEffect(() => {
+		if (showingCatergory === 'Your workouts' || showingCatergory === 'Edit workouts' || showingCatergory === 'Your progress') setShowSplide(false)
+		if (showingCatergory === 'Next workout' || showingCatergory === 'Edit schedule') setShowSplide(true)
+	}, [showingCatergory])
+
 	return (
 		<div>
 			<h1> { '< Progress />' } </h1>
-			<TopNavigation />
+			<TopNavigation categorySelection={setShowingCatergory}/>
 			{
 				showSplide ?
 				<Splide
 					options={ {
 						rewind: true,
 						width: '100%',
-						height: 300,
+						height: 200,
 						gap: '1rem',
 						type: 'loop',
-						perPage: 3,
+						perPage: 5,
 						focus: 'center',
 					} }
 					>
@@ -52,6 +57,9 @@ export const Home = () => {
 				</Splide>
 				: null
 			}
+			<div id="main-output">
+				{showingCatergory}
+			</div>
 
 		</div>
 	)
