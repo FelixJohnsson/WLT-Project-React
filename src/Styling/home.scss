@@ -4,6 +4,37 @@ $light-grey: #f6f6f7;
 .SplideSlide{
 	background-color: #fefffe;
 }
+
+#new-workout-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+
+}
+
+.new-workout-card{
+	width: 400px;
+	height: 390px;
+	.new-workout-card-name-description{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.next-workout-card-kg-rep{
+		margin: 0;
+	}
+
+}
+
+.short-input{
+	width: 60px;
+	height: 50px;
+	margin-top: 2rem;
+	border-radius: 5px;
+	padding: 0.5rem;
+}
+
 #category-selector-div{
 	display: flex;
 	flex-direction: row;
@@ -59,12 +90,6 @@ $light-grey: #f6f6f7;
 			width: 50%;
 			height: 100%;
 	
-			p{
-				width: 100px;
-				transform: rotate(-90deg);
-				font-size: 1rem;
-				font-weight: bold;
-			}
 		}
 	}
 
@@ -88,13 +113,6 @@ $light-grey: #f6f6f7;
 			align-items: center;
 			width: 50%;
 			height: 100%;
-
-			p{
-				width: 100px;
-				transform: rotate(-90deg);
-				font-size: 1rem;
-				font-weight: bold;
-			}
 		}
 
 		.next-workout-card-right{

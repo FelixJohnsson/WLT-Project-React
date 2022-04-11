@@ -4,37 +4,41 @@ import '../Styling/Home.css'
 
 export const NewWorkout = () => {
 	return (
-		<div>
+		<div id="new-workout-container">
 			<h1>New workout</h1>
-			<div className="new-workout-container">
-			<Card className="next-workout-card">
-					<div className="next-workout-card-left">
-						<p>Incline bench press</p>
+			<Card className="new-workout-card">
+				<div className="new-workout-card-name-description">
+					<Input fullWidth={false} margin={'dense'} maxRows="1" placeholder={'Name'}/>
+					<Input fullWidth={false} margin={'dense'} maxRows="1" placeholder={'Description'}/>
+				</div>
+				<div className="next-workout-card-kg-rep">
+					<div>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="KG"/> 
+							<i>x</i>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="REP"/> 
 					</div>
-					<div className="next-workout-card-right">
-						<p>
-							<Input defaultValue={50} fullWidth={false} margin={'dense'} className="kg-selector" maxRows="3"/> kg 
-							<Input defaultValue={10} fullWidth={false} margin={'dense'} className="rep-selector" maxRows="3"/> reps
-						</p>
-						<p>
-							<Input defaultValue={50} fullWidth={false} margin={'dense'} className="kg-selector" maxRows="3"/> kg 
-							<Input defaultValue={10} fullWidth={false} margin={'dense'} className="rep-selector" maxRows="3"/> reps
-						</p>
-						<p>
-							<Input defaultValue={50} fullWidth={false} margin={'dense'} className="kg-selector" maxRows="3"/> kg 
-							<Input defaultValue={10} fullWidth={false} margin={'dense'} className="rep-selector" maxRows="3"/> reps
-						</p>
-						<p>
-							<Input defaultValue={50} fullWidth={false} margin={'dense'} className="kg-selector" maxRows="3"/> kg 
-							<Input defaultValue={10} fullWidth={false} margin={'dense'} className="rep-selector" maxRows="3"/> reps
-						</p>
-						<p>
-							<Input defaultValue={50} fullWidth={false} margin={'dense'} className="kg-selector" maxRows="3"/> kg 
-							<Input defaultValue={10} fullWidth={false} margin={'dense'} className="rep-selector" maxRows="3"/> reps
-						</p>
+					<div>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="KG"/> 
+							<i>x</i>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="REP"/> 
 					</div>
-				</Card>
-			</div>
+					<div>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="KG"/> 
+							<i>x</i>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="REP"/> 
+					</div>
+					<div>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="KG"/> 
+							<i>x</i>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="REP"/> 
+					</div>
+					<div>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="KG"/> 
+							<i>x</i>
+						<Input fullWidth={false} margin={'dense'} className="short-input" maxRows="3" placeholder="REP"/> 
+					</div>
+				</div>
+			</Card>
 		</div>
 	)
 }

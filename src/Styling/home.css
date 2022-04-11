@@ -2,6 +2,46 @@
   background-color: #fefffe;
 }
 
+#new-workout-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.new-workout-card {
+  width: 400px;
+  height: 390px;
+}
+
+.new-workout-card .new-workout-card-name-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.new-workout-card .next-workout-card-kg-rep {
+  margin: 0;
+}
+
+.short-input {
+  width: 60px;
+  height: 50px;
+  margin-top: 2rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
 #category-selector-div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,14 +147,6 @@
   height: 100%;
 }
 
-#next-workout-container .next-workout-card-selected .next-workout-card-left p {
-  width: 100px;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-  font-size: 1rem;
-  font-weight: bold;
-}
-
 #next-workout-container .next-workout-card {
   margin: 10px;
   height: 300px;
@@ -153,14 +185,6 @@
           align-items: center;
   width: 50%;
   height: 100%;
-}
-
-#next-workout-container .next-workout-card-left p {
-  width: 100px;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-  font-size: 1rem;
-  font-weight: bold;
 }
 
 #next-workout-container .next-workout-card-right {
