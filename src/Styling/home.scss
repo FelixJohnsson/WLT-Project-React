@@ -1,5 +1,8 @@
+$white-background: #fefffe;
+$light-grey: #f6f6f7;
+
 .SplideSlide{
-	background-color: rgb(246, 246, 246);
+	background-color: #fefffe;
 }
 #category-selector-div{
 	display: flex;
@@ -8,7 +11,7 @@
 	.category-card-selected{
 		height: 160px;
 		width: 25%;
-		background-color: #fefffe;
+		background-color: $white-background;
 		justify-content: center;
 		display: flex;
 		flex-direction: column;
@@ -21,7 +24,7 @@
 	.category-card-unselected{
 		height: 160px;
 		width: 25%;
-		background-color: #f6f6f7;
+		background-color: $light-grey;
 		justify-content: center;
 		display: flex;
 		flex-direction: column;
@@ -71,14 +74,14 @@
 		height: 300px;
 		width: 20%;
 		min-width: 100px;
-		background-color: #fefffe;
+		background-color: $white-background;
 		justify-content: center;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 	}
 		.next-workout-card-left{
-			background-color: #f6f6f7;
+			background-color: $light-grey;
 			justify-content: center;
 			display: flex;
 			flex-direction: row;
@@ -95,7 +98,7 @@
 		}
 
 		.next-workout-card-right{
-			background-color: #fefffe;
+			background-color: $white-background;
 			justify-content: center;
 			display: flex;
 			flex-direction: column;

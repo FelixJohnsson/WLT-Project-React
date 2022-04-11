@@ -1,6 +1,6 @@
 import Card from '@mui/material/Card'
 import Input from '@mui/material/Input'
-import './home.css'
+import '../Styling/Home.css'
 
 export const NewWorkout = () => {
 	return (

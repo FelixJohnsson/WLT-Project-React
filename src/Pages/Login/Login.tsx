@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom"
 import { Input } from '@mui/material'
 import Button from '@mui/material/Button'
-import './Login.css'
+import '../../Styling/Login.css'
 
 export const Login = () => {
 	const navigate = useNavigate()

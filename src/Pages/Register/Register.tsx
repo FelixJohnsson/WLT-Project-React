@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom"
 import { Input } from '@mui/material'
 import Button from '@mui/material/Button'
-import './register.css'
+import '../../Styling/Register.css'
 
 export const Register = () => {
 	const navigate = useNavigate()

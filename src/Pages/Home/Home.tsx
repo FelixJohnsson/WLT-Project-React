@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import './home.css'
+import '../../Styling/Home.css'
 import { TopNavigation } from '../../Components/TopNavigation'
 import { NewWorkout } from '../../Components/NewWorkout'
 
