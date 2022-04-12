@@ -15,7 +15,7 @@ $light-grey: #f6f6f7;
 
 .new-workout-card{
 	width: 400px;
-	height: 392px;
+	height: 500px;
 	.new-workout-card-name-description{
 		display: flex;
 		flex-direction: column;
@@ -23,8 +23,24 @@ $light-grey: #f6f6f7;
 
 	.next-workout-card-kg-rep{
 		margin: 0;
-	}
 
+		.kg-rep-divider{
+			margin-bottom: 0;
+			padding: 0;
+			height: 45px;
+		}
+	}
+	p{
+		padding: 40px 0;
+	}
+	Select{
+		margin-top: 10px;
+		width: 50%;
+	}
+}
+
+.wide-button{
+	width: 400px;
 }
 
 .short-input{

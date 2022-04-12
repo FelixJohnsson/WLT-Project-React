@@ -17,7 +17,7 @@
 
 .new-workout-card {
   width: 400px;
-  height: 392px;
+  height: 500px;
 }
 
 .new-workout-card .new-workout-card-name-description {
@@ -32,6 +32,25 @@
 
 .new-workout-card .next-workout-card-kg-rep {
   margin: 0;
+}
+
+.new-workout-card .next-workout-card-kg-rep .kg-rep-divider {
+  margin-bottom: 0;
+  padding: 0;
+  height: 45px;
+}
+
+.new-workout-card p {
+  padding: 40px 0;
+}
+
+.new-workout-card Select {
+  margin-top: 10px;
+  width: 50%;
+}
+
+.wide-button {
+  width: 400px;
 }
 
 .short-input {
