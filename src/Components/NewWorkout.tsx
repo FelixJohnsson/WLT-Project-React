@@ -21,13 +21,15 @@ export const NewWorkout = () => {
 	const handleSubmit = (event: any) => {
 		event.preventDefault()
 		const newWorkoutData = {
-			exercise: exercise,
-			description: description,
-			category: category
+			username: 'Eternal',
+			workout:{
+				name: exercise,
+				description,
+				category
+			}
 		}
-		const user_id = ''
 
-		fetch(`${serverURL}/save_workout/${user_id}`, { //@TODO - change this to the user_id
+		fetch(`${serverURL}/save_workout`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
