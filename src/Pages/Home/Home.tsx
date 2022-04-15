@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import '../../Styling/Home.css'
 import { TopNavigation } from '../../Components/TopNavigation'
+
+import { YourWorkout } from '../../Components/YourWorkout'
 import { NewWorkout } from '../../Components/NewWorkout'
+import { NextWorkout } from '../../Components/NextWorkout'
+import { EditWorkout } from '../../Components/EditWorkout'
+import { EditSchedule } from '../../Components/EditSchedule'
+import { YourProgress } from '../../Components/YourProgress'
 
 import '@splidejs/react-splide/css'
 
-import Card from '@mui/material/Card'
-import Input from '@mui/material/Input'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 
 export const Home = () => {
@@ -59,7 +63,12 @@ export const Home = () => {
 				: null
 			}
 			<div id="main-output">
+				{showingCatergory === 'Your workout' ? <YourWorkout /> : null}
 				{showingCatergory === 'New workout' ? <NewWorkout /> : null}
+				{showingCatergory === 'Next workout' ? <NextWorkout /> : null}
+				{showingCatergory === 'Edit workouts' ? <EditWorkout /> : null}
+				{showingCatergory === 'Edit schedule' ? <EditSchedule /> : null}
+				{showingCatergory === 'Your progress' ? <YourProgress /> : null}
 			</div>
 
 		</div>
