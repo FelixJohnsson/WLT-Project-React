@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { Input } from '@mui/material'
 import Button from '@mui/material/Button'
 import '../../Styling/Login.css'
+import { ErrorLoginData, SuccessfulLoginData } from '../../Types'
 
 export const Login = () => {
 	const navigate = useNavigate()
@@ -24,8 +25,11 @@ export const Login = () => {
 			})
 		})
 		.then(res => res.json())
-		.then((data) => {
-			if(data.status === 200) return navigate("/home")
+		.then((data:SuccessfulLoginData | ErrorLoginData) => {
+			if(data.status === 200){
+				localStorage.setItem('login_data', JSON.stringify(data.data))
+				return navigate("/home")
+			}
 			else{
 				setError(<i id="error-message-shown">{data.message}</i>)
 				setPassword('')
