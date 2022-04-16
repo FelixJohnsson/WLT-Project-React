@@ -12,15 +12,35 @@ import { YourProgress } from '../../Components/YourProgress'
 import '@splidejs/react-splide/css'
 
 import { Splide, SplideSlide } from '@splidejs/react-splide'
+import { SuccessfulUserData, UserData } from '../../Types'
 
 export const Home = () => {
+	const serverURL = 'http://localhost:5000'
 	const [showSplide, setShowSplide] = useState(true)
 	const [showingCatergory, setShowingCatergory] = useState('Next workout')
+	const [userData, setUserData] = useState<UserData | null>(null)
+
+	const userDetails = JSON.parse(localStorage.getItem('login_data') || '{}')
 
 	useEffect(() => {
 		if (showingCatergory === 'Your workouts' || showingCatergory === 'Edit workouts' || showingCatergory === 'Your progress' || showingCatergory === 'New workout') setShowSplide(false)
 		if (showingCatergory === 'Next workout' || showingCatergory === 'Edit schedule') setShowSplide(true)
-	}, [showingCatergory])
+
+		fetch(`${serverURL}/get_user/${userDetails.username}`,
+		{
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+				}
+				})
+				.then(res => res.json())
+				.then((data:SuccessfulUserData) => {
+					setUserData(data.data)
+				}
+				)
+				.catch(err => console.log(err))
+	
+	}, [showingCatergory, userDetails.username])
 
 	return (
 		<div>
@@ -63,12 +83,12 @@ export const Home = () => {
 				: null
 			}
 			<div id="main-output">
-				{showingCatergory === 'Your workout' ? <YourWorkout /> : null}
-				{showingCatergory === 'New workout' ? <NewWorkout /> : null}
-				{showingCatergory === 'Next workout' ? <NextWorkout /> : null}
-				{showingCatergory === 'Edit workouts' ? <EditWorkout /> : null}
-				{showingCatergory === 'Edit schedule' ? <EditSchedule /> : null}
-				{showingCatergory === 'Your progress' ? <YourProgress /> : null}
+				{showingCatergory === 'Your workouts' ? <YourWorkout userData={userData}/> : null}
+				{showingCatergory === 'New workout' ? <NewWorkout userData={userData}/> : null}
+				{showingCatergory === 'Next workout' ? <NextWorkout userData={userData}/> : null}
+				{showingCatergory === 'Edit workouts' ? <EditWorkout userData={userData}/> : null}
+				{showingCatergory === 'Edit schedule' ? <EditSchedule userData={userData}/> : null}
+				{showingCatergory === 'Your progress' ? <YourProgress userData={userData}/> : null}
 			</div>
 
 		</div>

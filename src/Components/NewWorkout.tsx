@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import { useState } from 'react'
 import '../Styling/Home.css'
 
-export const NewWorkout = () => {
+export const NewWorkout = (props:any) => {
 	const serverURL = 'http://localhost:5000'
 
 	const [exercise, setExercise] = useState("")

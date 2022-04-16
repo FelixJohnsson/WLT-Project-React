@@ -1,16 +1,9 @@
-export const YourProgress = () => {
+export const YourProgress = (props:any) => {
 	const serverURL = 'http://localhost:5000'
-
-		fetch(`${serverURL}/get_workouts/:username`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-		})
 
 	return (
 		<div>
-			<h1>Your workouts</h1>
+			<h1>Your progress</h1>
 		</div>
 	)
 }
