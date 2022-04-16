@@ -3,8 +3,6 @@ import { UserData, Workout } from "../Types"
 export const YourWorkout = (props:any) => {
 	const serverURL = 'http://localhost:5000'
 
-	console.log(props.userData)
-
 	return (
 		<div>
 			<h1>Your workouts</h1>
