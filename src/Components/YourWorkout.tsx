@@ -19,7 +19,6 @@ export const YourWorkout = (props:any) => {
 					if(workout.category[0] === 'Cardio') cardColor = workout.category[0]
 					if(workout.category[0] === 'Shoulder') cardColor = workout.category[0]
 					
-					console.log(cardColor)
 					return (
 						<Card className={`your-workout-card ${cardColor}`}>
 							<h2>{workout.name}</h2>

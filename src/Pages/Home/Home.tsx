@@ -45,7 +45,7 @@ export const Home = () => {
 	return (
 		<div>
 			<h1> { 'Weight lifter tracker' } </h1>
-			<TopNavigation categorySelection={setShowingCatergory}/>
+			<TopNavigation categorySelectionDispatcher={setShowingCatergory} selectedCategory={showingCatergory}/>
 			{
 				showSplide ?
 				<Splide

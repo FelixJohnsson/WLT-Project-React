@@ -6,29 +6,30 @@ import stationaryBike from '../assets/images/stationary-bike.png'
 import weights from '../assets/images/weights.png'
 
 export const TopNavigation = (props: any) => {
+	
 	return (
 		<div id="category-selector-div">
-				<div className="category-card-unselected"onClick={() => {props.categorySelection('Your workouts')}}>
+				<div className={props.selectedCategory === 'Your workouts' ? 'category-card-selected' : 'category-card-unselected'} onClick={() => {props.categorySelectionDispatcher('Your workouts')}}>
 					<img src={singleDumbbell} alt="Gym"></img>
 					<p>Your workouts</p>
 				</div>	
-				<div className="category-card-unselected" onClick={() => {props.categorySelection('New workout')}}>
+				<div className={props.selectedCategory === 'New workout' ? 'category-card-selected' : 'category-card-unselected'} onClick={() => {props.categorySelectionDispatcher('New workout')}}>
 					<img src={gymStation} alt="Gym"></img>
 					<p>New workout</p>
 				</div>
-				<div className="category-card-selected"onClick={() => {props.categorySelection('Next workout')}}>
+				<div className={props.selectedCategory === 'Next workout' ? 'category-card-selected' : 'category-card-unselected'} onClick={() => {props.categorySelectionDispatcher('Next workout')}}>
 					<img src={muscle} alt="Gym"></img>
 					<p>Next workout</p>
 				</div>	
-				<div className="category-card-unselected"onClick={() => {props.categorySelection('Edit workouts')}}>
+				<div className={props.selectedCategory === 'Edit workouts' ? 'category-card-selected' : 'category-card-unselected'} onClick={() => {props.categorySelectionDispatcher('Edit workouts')}}>
 					<img src={weightlifter} alt="Gym"></img>
 					<p>Edit workouts</p>
 				</div>	
-				<div className="category-card-unselected"onClick={() => {props.categorySelection('Edit schedule')}}>
+				<div className={props.selectedCategory === 'Edit schedule' ? 'category-card-selected' : 'category-card-unselected'} onClick={() => {props.categorySelectionDispatcher('Edit schedule')}}>
 					<img src={stationaryBike} alt="Gym"></img>
 					<p>Edit schedule</p>
 				</div>	
-				<div className="category-card-unselected"onClick={() => {props.categorySelection('Your progress')}}>
+				<div className={props.selectedCategory === 'Your progress' ? 'category-card-selected' : 'category-card-unselected'} onClick={() => {props.categorySelectionDispatcher('Your progress')}}>
 					<img src={weights} alt="Gym"></img>
 					<p>Your progress</p>
 				</div>	
