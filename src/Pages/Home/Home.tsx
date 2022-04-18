@@ -44,7 +44,7 @@ export const Home = () => {
 
 	return (
 		<div>
-			<h1> { '< Progress />' } </h1>
+			<h1> { 'Weight lifter tracker' } </h1>
 			<TopNavigation categorySelection={setShowingCatergory}/>
 			{
 				showSplide ?

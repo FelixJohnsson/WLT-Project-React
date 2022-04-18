@@ -60,7 +60,9 @@ export const NewWorkout = (props:any) => {
 				name: exercise,
 				description,
 				category,
-				repsAndWeight
+				repsAndWeight,
+				status: '',
+				notes: '',
 			}
 		}
 

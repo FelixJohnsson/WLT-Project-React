@@ -1,0 +1,60 @@
+.your-workout-card {
+  margin: 0 10px;
+  height: 300px;
+  width: 20%;
+  min-width: 100px;
+  background-color: #fefffe;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.your-workout-card p {
+  padding: 0 20px;
+}
+
+#your-workouts-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Tricep {
+  background-color: #fdd462 !important;
+}
+
+.Chest {
+  background-color: #4be988 !important;
+}
+
+.Back {
+  background-color: #00f8f8 !important;
+}
+
+.Legs {
+  background-color: #2e21a1 !important;
+}
+
+.Shoulder {
+  background-color: #e26868 !important;
+}
+
+.Biceps {
+  background-color: #d5fffb !important;
+}
+
+.Cardio {
+  background-color: #ffa621 !important;
+}
+/*# sourceMappingURL=YourWorkout.css.map */

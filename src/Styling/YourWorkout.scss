@@ -1,0 +1,51 @@
+$white-background: #fefffe;
+$light-grey: #f6f6f7;
+$tricep-color: #fdd462;
+$chest-color: #4be988;
+$back-color: #00f8f8;
+$legs-color: #2e21a1;
+$shoulder-color: #e26868;
+$biceps-color: #d5fffb;
+$cardio-color: #ffa621;
+
+.your-workout-card{
+	margin: 0 10px;
+	height: 300px;
+	width: 20%;
+	min-width: 100px;
+	background-color: $white-background;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+
+	p{
+		padding: 0 20px;
+	}
+}
+#your-workouts-container{
+	display: flex;
+}
+
+.Tricep{
+	background-color: $tricep-color !important;
+}
+.Chest{
+	background-color: $chest-color !important;
+}
+.Back{
+	background-color: $back-color !important;
+}
+.Legs{
+	background-color: $legs-color !important;
+}
+.Shoulder{
+	background-color: $shoulder-color !important;
+}
+.Biceps{
+	background-color: $biceps-color !important;
+}
+.Cardio{
+	background-color: $cardio-color !important;
+}
