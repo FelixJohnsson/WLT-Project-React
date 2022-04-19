@@ -1,36 +1,76 @@
 import { UserData, Workout } from "../Types"
-import Card from '@mui/material/Card'
+import { WorkoutCard } from "./WorkoutCard"
+
 import '../Styling/YourWorkout.css'
+import { DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
+import { useState } from "react"
 
 export const YourWorkout = (props:any) => {
+	const [workoutOrder, setWorkoutOrder] = useState(props.userData.workouts)
 	const serverURL = 'http://localhost:5000'
+	console.warn(props)
+	const onDragEnd = (result:any) => {
+		const items = Array.from(workoutOrder)
+		const [reorderitem] = items.splice(result.source.index, 1)
+		items.splice(result.destination.index, 0, reorderitem)
+		setWorkoutOrder(items)
+	}
 
 	return (
 		<div>
 			<h1>Your workouts</h1>
 			<div id="your-workouts-container">
-				{props.userData.workouts.map((workout:Workout) => {
-					let cardColor = ''
-					if(workout.category[0] === 'Tricep') cardColor = workout.category[0]
-					if(workout.category[0] === 'Chest') cardColor = workout.category[0]
-					if(workout.category[0] === 'Back') cardColor = workout.category[0]
-					if(workout.category[0] === 'Bicep') cardColor = workout.category[0]
-					if(workout.category[0] === 'Legs') cardColor = workout.category[0]
-					if(workout.category[0] === 'Cardio') cardColor = workout.category[0]
-					if(workout.category[0] === 'Shoulder') cardColor = workout.category[0]
-					
-					return (
-						<Card className={`your-workout-card ${cardColor}`}>
-							<h2>{workout.name}</h2>
-							<p>{workout.category}</p>
-							<p>{workout.description}</p>
-
-							<p>{workout.notes}</p>
-							<p>{workout.status}</p>
-						</Card>
-					)
-				})}
+				<DragDropContext onDragEnd={onDragEnd}>
+					<Droppable droppableId="content">
+						{(provided) => (
+							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
+								{workoutOrder.map((workout:Workout, index:number) => {
+									return (
+										<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
+											{(provided) => (
+												<div className="draggable-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+													<WorkoutCard workout={workout} />
+												</div>
+											)}
+										</Draggable>
+									)
+								})}
+								{provided.placeholder}
+							</div>
+						)}
+					</Droppable>
+				</DragDropContext>
 			</div>
 		</div>
 	)
 }
+
+
+/*
+					{() => (
+						<Droppable droppableId="droppable">
+							{(provided) => (
+								<div
+									{...provided.droppableProps}
+									ref={provided.innerRef}
+									className="your-workouts">
+									{props.userData.workouts.map((workout:Workout, index:number) => (
+										<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
+											{(provided) => (
+												<div
+													ref={provided.innerRef}
+													{...provided.draggableProps}
+													{...provided.dragHandleProps}
+													className={`your-workout-card ${workout.category[0]}`}>
+													<WorkoutCard workout={workout} index={index} />
+												</div>
+											)}
+										</Draggable>
+									))}
+									{provided.placeholder}
+								</div>
+							)}
+						</Droppable>
+					)}
+
+*/

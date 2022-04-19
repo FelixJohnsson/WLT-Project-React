@@ -35,6 +35,7 @@ export const Home = () => {
 				})
 				.then(res => res.json())
 				.then((data:SuccessfulUserData) => {
+					console.debug(data.data)
 					setUserData(data.data)
 				}
 				)

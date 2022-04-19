@@ -26,6 +26,13 @@ $cardio-color: #ffa621;
 }
 #your-workouts-container{
 	display: flex;
+	flex-direction: column;
+}
+.draggable-container{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 5px auto;
 }
 
 .Tricep{
