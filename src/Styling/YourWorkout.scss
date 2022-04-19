@@ -11,8 +11,7 @@ $cardio-color: #ffa621;
 .your-workout-card{
 	margin: 0 10px;
 	height: 300px;
-	width: 20%;
-	min-width: 100px;
+	min-width: 300px;
 	background-color: $white-background;
 	justify-content: center;
 	display: flex;
@@ -27,12 +26,16 @@ $cardio-color: #ffa621;
 #your-workouts-container{
 	display: flex;
 	flex-direction: column;
+	overflow-x: scroll;
+	width: 100%;
 }
 .draggable-container{
-	display: flex;
-	justify-content: space-around;
 	align-items: center;
-	margin: 5px auto;
+}
+.droppable-container{
+	display: flex;
+	width: 100%;
+	align-items: center;
 }
 
 .Tricep{

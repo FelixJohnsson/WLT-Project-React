@@ -1,8 +1,7 @@
 .your-workout-card {
   margin: 0 10px;
   height: 300px;
-  width: 20%;
-  min-width: 100px;
+  min-width: 300px;
   background-color: #fefffe;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -32,18 +31,24 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  overflow-x: scroll;
+  width: 100%;
 }
 
 .draggable-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 5px auto;
+}
+
+.droppable-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .Tricep {

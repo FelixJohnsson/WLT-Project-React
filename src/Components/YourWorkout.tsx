@@ -21,7 +21,7 @@ export const YourWorkout = (props:any) => {
 			<h1>Your workouts</h1>
 			<div id="your-workouts-container">
 				<DragDropContext onDragEnd={onDragEnd}>
-					<Droppable droppableId="content">
+					<Droppable droppableId="content" direction="horizontal">
 						{(provided) => (
 							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
 								{workoutOrder.map((workout:Workout, index:number) => {
