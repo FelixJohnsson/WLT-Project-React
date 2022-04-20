@@ -12,11 +12,16 @@ export const NextWorkout = (props:any) => {
 			setWorkoutOrder(props.userData.workouts)
 		}
 		}, [props.userData])
-	console.warn(props)
 	const onDragEnd = (result:any) => {
-		if (result.destination.droppableId === 'content2'){
+	console.warn(result)
+
+		if (result.destination.droppableId === 'next-workout'){
 			nextWorkoutOrder.push(workoutOrder[result.source.index])
 			setNextWorkoutOrder(nextWorkoutOrder)
+
+			const items = Array.from(workoutOrder)
+			items.splice(result.source.index, 1)
+			setWorkoutOrder(items)
 		} else {
 			const items = Array.from(workoutOrder)
 			const [reorderitem] = items.splice(result.source.index, 1)
@@ -30,7 +35,7 @@ export const NextWorkout = (props:any) => {
 			<h1>Next workout</h1>
 			<div id="your-workouts-container">
 				<DragDropContext onDragEnd={onDragEnd}>
-				<Droppable droppableId="content2" direction="horizontal">
+				<Droppable droppableId="next-workout" direction="horizontal">
 						{(provided) => (
 							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
 								{nextWorkoutOrder.map((workout:Workout, index:number) => {
@@ -48,7 +53,8 @@ export const NextWorkout = (props:any) => {
 							</div>
 						)}
 					</Droppable>
-					<Droppable droppableId="content" direction="horizontal">
+					<h1>All workout</h1>
+					<Droppable droppableId="all-workouts" direction="horizontal">
 						{(provided) => (
 							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
 								{workoutOrder.map((workout:Workout, index:number) => {
