@@ -4,7 +4,7 @@ Purpose: Documenting lifts and progress in a much quicker and easier way compare
 
 Goal: Having a 'lift assistant'/A.I. gym partner that documents your progress and milestones. Gameify your workouts(?) Point system for lifts (?)
 
-Using: React, Material UI
+Using: React, Material UI, SplideSlide, react-beautiful-dnd
 
 ## Available Scripts
 
