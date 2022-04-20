@@ -7,8 +7,7 @@ import { useState } from "react"
 
 export const YourWorkout = (props:any) => {
 	const [workoutOrder, setWorkoutOrder] = useState(props.userData.workouts)
-	const serverURL = 'http://localhost:5000'
-	console.warn(props)
+	
 	const onDragEnd = (result:any) => {
 		const items = Array.from(workoutOrder)
 		const [reorderitem] = items.splice(result.source.index, 1)
