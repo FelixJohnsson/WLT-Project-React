@@ -5,28 +5,79 @@ import { WorkoutCard } from "./WorkoutCard"
 import '../Styling/NextWorkout.css'
 
 export const NextWorkout = (props:any) => {
-	const [workoutOrder, setWorkoutOrder] = useState([])
+	const [allWorkoutsOrder, setAllWorkoutsOrder] = useState([])
 	const [nextWorkoutOrder, setNextWorkoutOrder] = useState([])
 	useEffect(() => {
 		if(props.userData != null){
-			setWorkoutOrder(props.userData.workouts)
+			setAllWorkoutsOrder(props.userData.workouts)
 		}
-		}, [props.userData])
-	const onDragEnd = (result:any) => {
-	console.warn(result)
+	}, [props.userData])
 
-		if (result.destination.droppableId === 'next-workout'){
-			nextWorkoutOrder.push(workoutOrder[result.source.index])
-			setNextWorkoutOrder(nextWorkoutOrder)
+type WorkoutDragObject = {
+	draggableId: string
+	type: string
+	source: {
+		index: number
+		droppableId: 'next-workout' | 'all-workouts'
+	}
+	reason: string
+	mode: string
+	destination: {
+		index: number
+		droppableId: 'next-workout' | 'all-workouts'
+	}
+	combine: null
+}
 
-			const items = Array.from(workoutOrder)
-			items.splice(result.source.index, 1)
-			setWorkoutOrder(items)
+	const moveTo = (draggableObject:WorkoutDragObject) => {
+		if (draggableObject.destination.droppableId === 'next-workout'){
+			const newNextWorkoutOrder = [...nextWorkoutOrder]
+			const newItem = allWorkoutsOrder[draggableObject.source.index]
+			newNextWorkoutOrder.splice(draggableObject.destination.index, 0, newItem)
+			setNextWorkoutOrder(newNextWorkoutOrder)
+		}
+		if (draggableObject.destination.droppableId === 'all-workouts'){
+			const newAllWorkoutsOrder = [...allWorkoutsOrder]
+			const newItem = nextWorkoutOrder[draggableObject.source.index]
+			newAllWorkoutsOrder.splice(draggableObject.destination.index, 0, newItem)
+			setAllWorkoutsOrder(newAllWorkoutsOrder)
+		}
+	}
+
+	const moveFrom = (draggableObject:WorkoutDragObject) => {
+		if (draggableObject.source.droppableId === 'next-workout'){
+			const items = Array.from(nextWorkoutOrder)
+			items.splice(draggableObject.source.index, 1)
+			setNextWorkoutOrder(items)
+		}
+		if (draggableObject.source.droppableId === 'all-workouts'){
+			const items = Array.from(allWorkoutsOrder)
+			items.splice(draggableObject.source.index, 1)
+			setAllWorkoutsOrder(items)
+		}
+	}
+
+	const rearrange = (draggableObject:WorkoutDragObject) => {
+		if(draggableObject.destination.droppableId === 'next-workout'){
+			const newNextWorkoutOrder = [...nextWorkoutOrder]
+			const itemBeingMoved = newNextWorkoutOrder[draggableObject.source.index]
+			newNextWorkoutOrder.splice(draggableObject.source.index, 1)
+			newNextWorkoutOrder.splice(draggableObject.destination.index, 0, itemBeingMoved)
+			setNextWorkoutOrder(newNextWorkoutOrder)
 		} else {
-			const items = Array.from(workoutOrder)
-			const [reorderitem] = items.splice(result.source.index, 1)
-			items.splice(result.destination.index, 0, reorderitem)
-			setWorkoutOrder(items)
+			const newAllWorkoutsOrder = [...allWorkoutsOrder]
+			const itemBeingMoved = newAllWorkoutsOrder[draggableObject.source.index]
+			newAllWorkoutsOrder.splice(draggableObject.source.index, 1)
+			newAllWorkoutsOrder.splice(draggableObject.destination.index, 0, itemBeingMoved)
+			setAllWorkoutsOrder(newAllWorkoutsOrder)
+		}
+	}
+
+	const onDragEnd = (result:any) => {
+		if (result.destination.droppableId === result.source.droppableId) rearrange(result)
+		else {
+			moveTo(result)
+			moveFrom(result)
 		}
 	}
 
@@ -57,7 +108,7 @@ export const NextWorkout = (props:any) => {
 					<Droppable droppableId="all-workouts" direction="horizontal">
 						{(provided) => (
 							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
-								{workoutOrder.map((workout:Workout, index:number) => {
+								{allWorkoutsOrder.map((workout:Workout, index:number) => {
 									return (
 										<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
 											{(provided) => (
@@ -78,3 +129,4 @@ export const NextWorkout = (props:any) => {
 		</div>
 	)
 }
+
