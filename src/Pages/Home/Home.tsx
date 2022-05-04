@@ -14,6 +14,16 @@ import '@splidejs/react-splide/css'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { SuccessfulUserData, UserData } from '../../Types'
 
+const getDaysInMonth = (month:number, year:number) => {
+	const date = new Date(year, month, 1)
+	const days = []
+	while (date.getMonth() === month) {
+	  days.push(new Date(date))
+	  date.setDate(date.getDate() + 1)
+	}
+	return days
+  }
+
 export const Home = () => {
 	const serverURL = 'http://localhost:5000'
 	const [showSplide, setShowSplide] = useState(true)
@@ -35,13 +45,15 @@ export const Home = () => {
 				})
 				.then(res => res.json())
 				.then((data:SuccessfulUserData) => {
-					console.debug(data.data)
 					setUserData(data.data)
+					
 				}
 				)
 				.catch(err => console.log(err))
 	
 	}, [showingCatergory, userDetails.username])
+
+	const datesInMonth = getDaysInMonth(new Date().getMonth(), 2022)
 
 	return (
 		<div>
@@ -60,26 +72,21 @@ export const Home = () => {
 						focus: 'center',
 					} }
 					>
-					<SplideSlide>
-						<p>April 8th</p>
-						<i>No workout planned</i>
-					</SplideSlide>
-					<SplideSlide className="SplideSlide">
-						<p>April 9th</p>
-						<i>No workout planned</i>
-					</SplideSlide>
-					<SplideSlide>
-						<p>April 10th | Today</p>
-						<p>Chest workout planned</p>
-					</SplideSlide>
-					<SplideSlide>
-						<p>April 11th</p>
-						<p>Back workout planned</p>
-					</SplideSlide>
-					<SplideSlide>
-						<p>April 12th</p>
-						<i>No workout planned</i>
-					</SplideSlide>
+						{
+							datesInMonth.map((workout, index) => {
+								console.log(workout)
+								return (
+									<SplideSlide key={index}>
+										<div className='workout-card'>
+											<div className='workout-card-text'>
+												<p>{`${workout.toDateString()}`}</p>
+											</div>
+										</div>
+									</SplideSlide>
+								)
+							})
+
+						}
 				</Splide>
 				: null
 			}

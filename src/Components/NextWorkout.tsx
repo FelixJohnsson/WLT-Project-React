@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import { Workout } from "../Types"
 import { WorkoutCard } from "./WorkoutCard"
 import '../Styling/NextWorkout.css'
+import Button from '@mui/material/Button'
 
 export const NextWorkout = (props:any) => {
 	const [allWorkoutsOrder, setAllWorkoutsOrder] = useState([])
@@ -104,7 +105,8 @@ type WorkoutDragObject = {
 							</div>
 						)}
 					</Droppable>
-					<h1>All workout</h1>
+					<Button variant="outlined">Submit next workout plan</Button>
+					<h1>All workouts</h1>
 					<Droppable droppableId="all-workouts" direction="horizontal">
 						{(provided) => (
 							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
