@@ -26,10 +26,13 @@ const getDaysInMonth = (month:number, year:number) => {
 
 export const Home = () => {
 	const serverURL = 'http://localhost:5000'
+	const datesInMonth = getDaysInMonth(new Date().getMonth(), 2022)
+
 	const [showSplide, setShowSplide] = useState(true)
 	const [showingCatergory, setShowingCatergory] = useState('Next workout')
 	const [userData, setUserData] = useState<UserData | null>(null)
-	const [onDate, setOnDate] = useState<number>(new Date().getDay())
+	const [onDateNumber, setOnDateNumber] = useState<number>(new Date().getDay())
+	const [onDateString, setOnDateString] = useState<string | Date>(datesInMonth[onDateNumber].toDateString())
 
 	const userDetails = JSON.parse(localStorage.getItem('login_data') || '{}')
 
@@ -53,7 +56,6 @@ export const Home = () => {
 	
 	}, [showingCatergory, userDetails.username])
 
-	const datesInMonth = getDaysInMonth(new Date().getMonth(), 2022)
 
 	const ref = useRef<any>()
 	return (
@@ -64,8 +66,10 @@ export const Home = () => {
 				showSplide ?
 				<Splide
 					ref={ref}
-					// @ts-ignore
-					onMoved={(e) => console.log(ref.current.splide.index+1)}
+					onMoved={(e) => {
+						setOnDateNumber(e.index)
+						setOnDateString(datesInMonth[e.index].toDateString())
+					}}
 					options={ {
 						rewind: true,
 						width: '100%',
@@ -74,7 +78,7 @@ export const Home = () => {
 						type: 'loop',
 						perPage: 5,
 						focus: 'center',
-						start: onDate
+						start: onDateNumber
 					} }
 					>
 						{
@@ -97,7 +101,7 @@ export const Home = () => {
 			<div id="main-output">
 				{showingCatergory === 'Your workouts' ? <YourWorkout userData={userData}/> : null}
 				{showingCatergory === 'New workout' ? <NewWorkout userData={userData}/> : null}
-				{showingCatergory === 'Next workout' ? <NextWorkout userData={userData}/> : null}
+				{showingCatergory === 'Next workout' ? <NextWorkout userData={userData} dateString={onDateString}/> : null}
 				{showingCatergory === 'Edit workouts' ? <EditWorkout userData={userData}/> : null}
 				{showingCatergory === 'Edit schedule' ? <EditSchedule userData={userData}/> : null}
 				{showingCatergory === 'Your progress' ? <YourProgress userData={userData}/> : null}

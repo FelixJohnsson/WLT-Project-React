@@ -84,7 +84,7 @@ type WorkoutDragObject = {
 
 	return (
 		<div>
-			<h1>Next workout</h1>
+			<h1>{props.dateString}</h1>
 			<div id="your-workouts-container">
 				<DragDropContext onDragEnd={onDragEnd}>
 				<Droppable droppableId="next-workout" direction="horizontal">
