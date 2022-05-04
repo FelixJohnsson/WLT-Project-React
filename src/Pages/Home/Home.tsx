@@ -29,6 +29,7 @@ export const Home = () => {
 	const [showSplide, setShowSplide] = useState(true)
 	const [showingCatergory, setShowingCatergory] = useState('Next workout')
 	const [userData, setUserData] = useState<UserData | null>(null)
+	const [onDate, setOnDate] = useState<number>(new Date().getDay())
 
 	const userDetails = JSON.parse(localStorage.getItem('login_data') || '{}')
 
@@ -54,7 +55,7 @@ export const Home = () => {
 
 	const datesInMonth = getDaysInMonth(new Date().getMonth(), 2022)
 
-	const ref = useRef(null)
+	const ref = useRef<any>()
 	return (
 		<div>
 			<h1> { 'Weight lifter tracker' } </h1>
@@ -73,6 +74,7 @@ export const Home = () => {
 						type: 'loop',
 						perPage: 5,
 						focus: 'center',
+						start: onDate
 					} }
 					>
 						{
