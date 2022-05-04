@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import '../../Styling/Home.css'
+import '../../Styling/YourWorkout.css'
 import { TopNavigation } from '../../Components/TopNavigation'
-
 import { YourWorkout } from '../../Components/YourWorkout'
 import { NewWorkout } from '../../Components/NewWorkout'
 import { NextWorkout } from '../../Components/NextWorkout'
@@ -13,6 +13,10 @@ import '@splidejs/react-splide/css'
 
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { SuccessfulUserData, UserData } from '../../Types'
+
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 const getDaysInMonth = (month:number, year:number) => {
 	const date = new Date(year, month, 1)
@@ -33,6 +37,7 @@ export const Home = () => {
 	const [userData, setUserData] = useState<UserData | null>(null)
 	const [onDateNumber, setOnDateNumber] = useState<number>(new Date().getDay())
 	const [onDateString, setOnDateString] = useState<string | Date>(datesInMonth[onDateNumber].toDateString())
+	const [chosenWorkouts, setChosenWorkouts] = useState<any[]>([])
 
 	const userDetails = JSON.parse(localStorage.getItem('login_data') || '{}')
 
@@ -56,7 +61,7 @@ export const Home = () => {
 	
 	}, [showingCatergory, userDetails.username])
 
-
+	console.log(chosenWorkouts)
 	const ref = useRef<any>()
 	return (
 		<div>
@@ -88,6 +93,20 @@ export const Home = () => {
 										<div className='workout-date-card'>
 											<div className='workout-card-text'>
 												<p>{`${workout.toDateString()}`}</p>
+
+												{
+													onDateNumber === index ?
+													<Stack direction="row" spacing={1}>
+													{
+														chosenWorkouts.map((chosenWorkout, chosenIndex) => {
+															return (
+																<Avatar key={chosenIndex} className={chosenWorkout.category[0]}>{chosenWorkout.name.charAt(0)}</Avatar>
+															)
+														})
+													}
+												</Stack>
+												: null
+												}
 											</div>
 										</div>
 									</SplideSlide>
@@ -101,7 +120,7 @@ export const Home = () => {
 			<div id="main-output">
 				{showingCatergory === 'Your workouts' ? <YourWorkout userData={userData}/> : null}
 				{showingCatergory === 'New workout' ? <NewWorkout userData={userData}/> : null}
-				{showingCatergory === 'Next workout' ? <NextWorkout userData={userData} dateString={onDateString}/> : null}
+				{showingCatergory === 'Next workout' ? <NextWorkout userData={userData} dateString={onDateString} setChosenWorkouts={setChosenWorkouts}/> : null}
 				{showingCatergory === 'Edit workouts' ? <EditWorkout userData={userData}/> : null}
 				{showingCatergory === 'Edit schedule' ? <EditSchedule userData={userData}/> : null}
 				{showingCatergory === 'Your progress' ? <YourProgress userData={userData}/> : null}

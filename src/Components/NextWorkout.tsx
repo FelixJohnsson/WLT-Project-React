@@ -36,6 +36,7 @@ type WorkoutDragObject = {
 			const newItem = allWorkoutsOrder[draggableObject.source.index]
 			newNextWorkoutOrder.splice(draggableObject.destination.index, 0, newItem)
 			setNextWorkoutOrder(newNextWorkoutOrder)
+			props.setChosenWorkouts(newNextWorkoutOrder)
 		}
 		if (draggableObject.destination.droppableId === 'all-workouts'){
 			const newAllWorkoutsOrder = [...allWorkoutsOrder]
