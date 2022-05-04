@@ -9,8 +9,14 @@ $light-grey: #f6f6f7;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
 
-
+.workout-date-card{
+	border: solid rgb(218, 218, 218) 1px;
+	height: 80%;
+	margin: auto;
+	padding: 5px;
+	text-align: center;
 }
 
 .new-workout-card{

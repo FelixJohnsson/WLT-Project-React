@@ -11,8 +11,8 @@ $cardio-color: #ffa621;
 .your-workout-card{
 	margin: 0 10px;
 	height: 300px;
-	min-width: 300px;
-	max-width: 300px;
+	min-width: 200px;
+	max-width: 200px;
 	background-color: $white-background;
 	justify-content: center;
 	display: flex;
@@ -21,7 +21,7 @@ $cardio-color: #ffa621;
 	align-items: center;
 
 	p{
-		padding: 0 20px;
+		padding: 0 5px;
 	}
 }
 #your-workouts-container{

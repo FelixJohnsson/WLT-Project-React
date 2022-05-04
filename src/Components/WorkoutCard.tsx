@@ -7,9 +7,6 @@ export const WorkoutCard = (props:any) => {
 			<h2>{props.workout.name}</h2>
 			<p>{props.workout.category}</p>
 			<p>{props.workout.description}</p>
-		
-			<p>{props.workout.notes}</p>
-			<p>{props.workout.status}</p>
 		</Card>
 	)
 }

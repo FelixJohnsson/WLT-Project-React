@@ -1,8 +1,8 @@
 .your-workout-card {
   margin: 0 10px;
   height: 300px;
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 200px;
+  max-width: 200px;
   background-color: #fefffe;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -21,7 +21,7 @@
 }
 
 .your-workout-card p {
-  padding: 0 20px;
+  padding: 0 5px;
 }
 
 #your-workouts-container {

@@ -15,6 +15,14 @@
           align-items: center;
 }
 
+.workout-date-card {
+  border: solid #dadada 1px;
+  height: 80%;
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+}
+
 .new-workout-card {
   width: 400px;
   height: 500px;

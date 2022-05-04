@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import '../../Styling/Home.css'
 import { TopNavigation } from '../../Components/TopNavigation'
 
@@ -46,7 +46,6 @@ export const Home = () => {
 				.then(res => res.json())
 				.then((data:SuccessfulUserData) => {
 					setUserData(data.data)
-					
 				}
 				)
 				.catch(err => console.log(err))
@@ -55,6 +54,7 @@ export const Home = () => {
 
 	const datesInMonth = getDaysInMonth(new Date().getMonth(), 2022)
 
+	const ref = useRef(null)
 	return (
 		<div>
 			<h1> { 'Weight lifter tracker' } </h1>
@@ -62,6 +62,9 @@ export const Home = () => {
 			{
 				showSplide ?
 				<Splide
+					ref={ref}
+					// @ts-ignore
+					onMoved={(e) => console.log(ref.current.splide.index+1)}
 					options={ {
 						rewind: true,
 						width: '100%',
@@ -74,10 +77,9 @@ export const Home = () => {
 					>
 						{
 							datesInMonth.map((workout, index) => {
-								console.log(workout)
 								return (
 									<SplideSlide key={index}>
-										<div className='workout-card'>
+										<div className='workout-date-card'>
 											<div className='workout-card-text'>
 												<p>{`${workout.toDateString()}`}</p>
 											</div>
