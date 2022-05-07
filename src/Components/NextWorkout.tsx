@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
-import { Workout } from "../Types"
+import { SuccessfulUserData, Workout, WorkoutInSchedule } from "../Types"
 import { WorkoutCard } from "./WorkoutCard"
 import '../Styling/NextWorkout.css'
 import Button from '@mui/material/Button'
+import SendIcon from '@mui/icons-material/Send';
 
 export const NextWorkout = (props:any) => {
+	console.log(props)
+	const serverURL = 'http://localhost:5000'
 	const [allWorkoutsOrder, setAllWorkoutsOrder] = useState([])
 	const [nextWorkoutOrder, setNextWorkoutOrder] = useState([])
 	useEffect(() => {
@@ -83,6 +86,33 @@ type WorkoutDragObject = {
 		}
 	}
 
+	const handleNextWorkoutSubmit = () => {
+
+		const addDateToWorkouts = nextWorkoutOrder.map((workout:WorkoutInSchedule) => {
+			workout.dateString = props.dateString
+			return workout
+		})
+			
+		fetch(`${serverURL}/save_new_schedule_entry/`,
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+				},
+			body: JSON.stringify({
+				username: props.userData.username,
+				scheduleEntry: addDateToWorkouts,
+				dateString: props.dateString
+			})
+				})
+				.then(res => res.json())
+				.then((data:SuccessfulUserData) => {
+					console.log(data)
+				}
+				)
+				.catch(err => console.log(err))
+	}
+
 	return (
 		<div>
 			<h1>{props.dateString}</h1>
@@ -106,7 +136,7 @@ type WorkoutDragObject = {
 							</div>
 						)}
 					</Droppable>
-					<Button variant="outlined">Submit next workout plan</Button>
+					<Button variant="outlined" endIcon={<SendIcon />} onClick={handleNextWorkoutSubmit}>Submit next workout plan</Button>
 					<h1>All workouts</h1>
 					<Droppable droppableId="all-workouts" direction="horizontal">
 						{(provided) => (

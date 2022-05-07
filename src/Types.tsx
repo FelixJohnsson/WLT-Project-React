@@ -40,6 +40,20 @@ export type Workout = {
 	username: string
 }
 
+export type WorkoutInSchedule = {
+	name: string,
+	description: string,
+	category: WorkoutCategory,
+	internal_id: string,
+	sets?: number[],
+	reps?: number[],
+	weight?: number[],
+	notes?: string,
+	status: Status,
+	username: string
+	dateString: string
+}
+
 export interface SuccessfulUserData {
 	message: string,
 	status: 200,
