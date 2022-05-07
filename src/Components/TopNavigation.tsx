@@ -4,6 +4,7 @@ import muscle from '../assets/images/muscle.png'
 import weightlifter from '../assets/images/weightlifter.png'
 import stationaryBike from '../assets/images/stationary-bike.png'
 import weights from '../assets/images/weights.png'
+import dumbbell2 from '../assets/images/dumbbell2.png'
 
 export const TopNavigation = (props: any) => {
 	
@@ -32,6 +33,10 @@ export const TopNavigation = (props: any) => {
 				<div className={props.selectedCategory === 'Your progress' ? 'category-card-selected' : 'category-card-unselected'} onClick={() => {props.categorySelectionDispatcher('Your progress')}}>
 					<img src={weights} alt="Gym"></img>
 					<p>Your progress</p>
+				</div>	
+				<div className={props.selectedCategory === 'Start workout' ? 'category-card-selected' : 'category-card-unselected'} onClick={() => {props.categorySelectionDispatcher('Start workout')}}>
+					<img src={dumbbell2} alt="Gym"></img>
+					<p>Start workout</p>
 				</div>	
 			</div>
 	)

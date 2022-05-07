@@ -8,6 +8,7 @@ import { NextWorkout } from '../../Components/NextWorkout'
 import { EditWorkout } from '../../Components/EditWorkout'
 import { EditSchedule } from '../../Components/EditSchedule'
 import { YourProgress } from '../../Components/YourProgress'
+import { StartWorkout } from '../../Components/StartWorkout'
 
 import '@splidejs/react-splide/css'
 
@@ -16,7 +17,6 @@ import { SuccessfulUserData, UserData } from '../../Types'
 
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { deepOrange, deepPurple } from '@mui/material/colors';
 
 const getDaysInMonth = (month:number, year:number) => {
 	const date = new Date(year, month, 1)
@@ -33,7 +33,7 @@ export const Home = () => {
 	const datesInMonth = getDaysInMonth(new Date().getMonth(), 2022)
 
 	const [showSplide, setShowSplide] = useState(true)
-	const [showingCatergory, setShowingCatergory] = useState('Next workout')
+	const [showingCategory, setShowingCategory] = useState('Next workout')
 	const [userData, setUserData] = useState<UserData | null>(null)
 	const [onDateNumber, setOnDateNumber] = useState<number>(new Date().getDay())
 	const [onDateString, setOnDateString] = useState<string | Date>(datesInMonth[onDateNumber].toDateString())
@@ -42,8 +42,8 @@ export const Home = () => {
 	const userDetails = JSON.parse(localStorage.getItem('login_data') || '{}')
 
 	useEffect(() => {
-		if (showingCatergory === 'Your workouts' || showingCatergory === 'Edit workouts' || showingCatergory === 'Your progress' || showingCatergory === 'New workout') setShowSplide(false)
-		if (showingCatergory === 'Next workout' || showingCatergory === 'Edit schedule') setShowSplide(true)
+		if (showingCategory === 'Your workouts' || showingCategory === 'Edit workouts' || showingCategory === 'Your progress' || showingCategory === 'New workout' || showingCategory === 'Start workout') setShowSplide(false)
+		if (showingCategory === 'Next workout' || showingCategory === 'Edit schedule') setShowSplide(true)
 
 		fetch(`${serverURL}/get_user/${userDetails.username}`,
 		{
@@ -59,14 +59,13 @@ export const Home = () => {
 				)
 				.catch(err => console.log(err))
 	
-	}, [showingCatergory, userDetails.username])
+	}, [showingCategory, userDetails.username])
 
-	console.log(chosenWorkouts)
 	const ref = useRef<any>()
 	return (
 		<div>
 			<h1> { 'Weight lifter tracker' } </h1>
-			<TopNavigation categorySelectionDispatcher={setShowingCatergory} selectedCategory={showingCatergory}/>
+			<TopNavigation categorySelectionDispatcher={setShowingCategory} selectedCategory={showingCategory}/>
 			{
 				showSplide ?
 				<Splide
@@ -118,12 +117,13 @@ export const Home = () => {
 				: null
 			}
 			<div id="main-output">
-				{showingCatergory === 'Your workouts' ? <YourWorkout userData={userData}/> : null}
-				{showingCatergory === 'New workout' ? <NewWorkout userData={userData}/> : null}
-				{showingCatergory === 'Next workout' ? <NextWorkout userData={userData} dateString={onDateString} setChosenWorkouts={setChosenWorkouts}/> : null}
-				{showingCatergory === 'Edit workouts' ? <EditWorkout userData={userData}/> : null}
-				{showingCatergory === 'Edit schedule' ? <EditSchedule userData={userData}/> : null}
-				{showingCatergory === 'Your progress' ? <YourProgress userData={userData}/> : null}
+				{showingCategory === 'Your workouts' ? <YourWorkout userData={userData}/> : null}
+				{showingCategory === 'New workout' ? <NewWorkout userData={userData}/> : null}
+				{showingCategory === 'Next workout' ? <NextWorkout userData={userData} dateString={onDateString} setChosenWorkouts={setChosenWorkouts}/> : null}
+				{showingCategory === 'Edit workouts' ? <EditWorkout userData={userData}/> : null}
+				{showingCategory === 'Edit schedule' ? <EditSchedule userData={userData}/> : null}
+				{showingCategory === 'Your progress' ? <YourProgress userData={userData}/> : null}
+				{showingCategory === 'Start workout' ? <StartWorkout userData={userData} dateString={onDateString} chosenWorkouts={chosenWorkouts}/> : null}
 			</div>
 
 		</div>
