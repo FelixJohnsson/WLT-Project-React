@@ -35,6 +35,7 @@ export const Home = () => {
 	const [showSplide, setShowSplide] = useState(true)
 	const [showingCategory, setShowingCategory] = useState('Next workout')
 	const [userData, setUserData] = useState<UserData | null>(null)
+	const [userSchedule, setUserSchedule] = useState<any>(null)
 	const [onDateNumber, setOnDateNumber] = useState<number>(new Date().getDate()-1)
 	const [onDateString, setOnDateString] = useState<string | Date>(datesInMonth[onDateNumber].toDateString())
 	const [chosenWorkouts, setChosenWorkouts] = useState<any[]>([])
@@ -55,6 +56,7 @@ export const Home = () => {
 				.then(res => res.json())
 				.then((data:SuccessfulUserData) => {
 					setUserData(data.data)
+					setUserSchedule(data.data.schedule)
 				}
 				)
 				.catch(err => console.log(err))
@@ -62,6 +64,16 @@ export const Home = () => {
 	}, [showingCategory, userDetails.username])
 
 	const ref = useRef<any>()
+	console.log(userSchedule)
+
+	const generateMarkers = (workouts: any[]) => {
+		const array = workouts.map((workout:any, chosenIndex) => {
+			return (
+				<Avatar key={chosenIndex} className={workout.category[0]}>{workout.name.charAt(0)}</Avatar>
+			)
+		})
+		return array
+	}
 	return (
 		<div>
 			<h1> { 'Weight lifter tracker' } </h1>
@@ -92,16 +104,12 @@ export const Home = () => {
 										<div className='workout-date-card'>
 											<div className='workout-card-text'>
 												<p>{`${workout.toDateString()}`}</p>
-
 												{
 													onDateNumber === index ?
+													
 													<Stack direction="row" spacing={1}>
 													{
-														chosenWorkouts.map((chosenWorkout, chosenIndex) => {
-															return (
-																<Avatar key={chosenIndex} className={chosenWorkout.category[0]}>{chosenWorkout.name.charAt(0)}</Avatar>
-															)
-														})
+														generateMarkers(chosenWorkouts)
 													}
 												</Stack>
 												: null

@@ -25,6 +25,7 @@ export type UserData = {
 	first_connection: string,
 	workouts: any[],
 	workouts_count: number,
+	schedule: any[]
 }
 
 export type Workout = {
