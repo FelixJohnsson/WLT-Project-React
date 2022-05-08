@@ -43,33 +43,3 @@ export const YourWorkout = (props:any) => {
 		</div>
 	)
 }
-
-
-/*
-					{() => (
-						<Droppable droppableId="droppable">
-							{(provided) => (
-								<div
-									{...provided.droppableProps}
-									ref={provided.innerRef}
-									className="your-workouts">
-									{props.userData.workouts.map((workout:Workout, index:number) => (
-										<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
-											{(provided) => (
-												<div
-													ref={provided.innerRef}
-													{...provided.draggableProps}
-													{...provided.dragHandleProps}
-													className={`your-workout-card ${workout.category[0]}`}>
-													<WorkoutCard workout={workout} index={index} />
-												</div>
-											)}
-										</Draggable>
-									))}
-									{provided.placeholder}
-								</div>
-							)}
-						</Droppable>
-					)}
-
-*/

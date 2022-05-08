@@ -35,7 +35,7 @@ export const Home = () => {
 	const [showSplide, setShowSplide] = useState(true)
 	const [showingCategory, setShowingCategory] = useState('Next workout')
 	const [userData, setUserData] = useState<UserData | null>(null)
-	const [onDateNumber, setOnDateNumber] = useState<number>(new Date().getDay())
+	const [onDateNumber, setOnDateNumber] = useState<number>(new Date().getDate()-1)
 	const [onDateString, setOnDateString] = useState<string | Date>(datesInMonth[onDateNumber].toDateString())
 	const [chosenWorkouts, setChosenWorkouts] = useState<any[]>([])
 
