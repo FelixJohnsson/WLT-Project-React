@@ -64,16 +64,49 @@ export const Home = () => {
 	}, [showingCategory, userDetails.username])
 
 	const ref = useRef<any>()
-	console.log(userSchedule)
 
 	const generateMarkers = (workouts: any[]) => {
-		const array = workouts.map((workout:any, chosenIndex) => {
+		return workouts.map((workout:any, chosenIndex) => {
 			return (
 				<Avatar key={chosenIndex} className={workout.category[0]}>{workout.name.charAt(0)}</Avatar>
 			)
 		})
-		return array
 	}
+
+	const generateDatesSplide = () => {
+		return datesInMonth.map((workout, index) => {
+			return (
+				<SplideSlide key={index}>
+					<div className='workout-date-card'>
+						<div className='workout-card-text'>
+							<p>{`${workout.toDateString()}`}</p>
+							<Stack direction="row" spacing={1}>
+							{
+								userSchedule?.map((object:any) => {
+									if (object.date === workout.toDateString()) {
+										return generateMarkers(object.workouts)
+									}
+									return null
+								})
+							}
+							</Stack>
+							{
+								onDateNumber === index ?
+								
+								<Stack direction="row" spacing={1}>
+									{
+										generateMarkers(chosenWorkouts)
+									}
+								</Stack>
+							: null
+							}
+						</div>
+					</div>
+				</SplideSlide>
+			)
+		})
+	}
+
 	return (
 		<div>
 			<h1> { 'Weight lifter tracker' } </h1>
@@ -97,30 +130,7 @@ export const Home = () => {
 						start: onDateNumber
 					} }
 					>
-						{
-							datesInMonth.map((workout, index) => {
-								return (
-									<SplideSlide key={index}>
-										<div className='workout-date-card'>
-											<div className='workout-card-text'>
-												<p>{`${workout.toDateString()}`}</p>
-												{
-													onDateNumber === index ?
-													
-													<Stack direction="row" spacing={1}>
-													{
-														generateMarkers(chosenWorkouts)
-													}
-												</Stack>
-												: null
-												}
-											</div>
-										</div>
-									</SplideSlide>
-								)
-							})
-
-						}
+					{generateDatesSplide()}
 				</Splide>
 				: null
 			}
