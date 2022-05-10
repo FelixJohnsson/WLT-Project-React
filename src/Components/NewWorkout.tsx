@@ -53,7 +53,6 @@ export const NewWorkout = (props:any) => {
 	}
 
 	const handleSubmit = (event: any) => {
-		event.preventDefault()
 		const newWorkoutData = {
 			username: 'Eternal',
 			workout:{
@@ -65,6 +64,8 @@ export const NewWorkout = (props:any) => {
 				notes: '',
 			}
 		}
+
+		console.log(newWorkoutData)
 
 		fetch(`${serverURL}/save_workout`, {
 			method: 'POST',

@@ -15,8 +15,8 @@ import '@splidejs/react-splide/css'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { SuccessfulUserData, UserData } from '../../Types'
 
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar'
+import Stack from '@mui/material/Stack'
 
 const getDaysInMonth = (month:number, year:number) => {
 	const date = new Date(year, month, 1)
@@ -61,7 +61,8 @@ export const Home = () => {
 				)
 				.catch(err => console.log(err))
 	
-	}, [showingCategory, userDetails.username])
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
 	const ref = useRef<any>()
 

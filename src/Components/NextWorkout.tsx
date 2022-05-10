@@ -7,14 +7,12 @@ import Button from '@mui/material/Button'
 import SendIcon from '@mui/icons-material/Send';
 
 export const NextWorkout = (props:any) => {
-	console.log(props)
 	const serverURL = 'http://localhost:5000'
 	const [allWorkoutsOrder, setAllWorkoutsOrder] = useState([])
 	const [nextWorkoutOrder, setNextWorkoutOrder] = useState([])
+
 	useEffect(() => {
-		if(props.userData != null){
-			setAllWorkoutsOrder(props.userData.workouts)
-		}
+		if(props.userData != null) setAllWorkoutsOrder(props.userData.workouts)
 	}, [props.userData])
 
 type WorkoutDragObject = {
