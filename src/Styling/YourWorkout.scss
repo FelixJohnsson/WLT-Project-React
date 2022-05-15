@@ -1,10 +1,11 @@
 $white-background: #fefffe;
 $light-grey: #f6f6f7;
+$purple: #9d23b352;
 
 $chest-color: #4be988;
 $tricep-color: #fdd462;
 $back-color: #00f8f8;
-$biceps-color: #d5fffb;
+$biceps-color: #9bc7c2;
 $legs-color: #2e21a1;
 $lower-back: #f098a0;
 $forearm-color: #c5b49f;
@@ -15,20 +16,50 @@ $other-color: #d3d3d3;
 
 .your-workout-card{
 	margin: 0 10px;
-	height: 300px;
+	padding: 5px;
+	height: 280px;
 	min-width: 200px;
 	max-width: 200px;
-	background-color: $white-background;
 	justify-content: center;
 	display: flex;
 	flex-direction: column;
-	text-align: center;
-	align-items: center;
+	border-radius: 10px;
 
-	p{
-		padding: 0 5px;
+
+
+	.title-container{
+		max-height: 120px;
+		min-height: 120px;
+		h2{
+			font-size: 19px;
+			color: $light-grey;
+			border-bottom: solid white 1px;
+		}
+		p{
+			font-size: 18px;
+			font-weight: 800;
+			color: $light-grey;
+		}
+	}
+	.description-container{
+		max-height: 100px;
+		min-height: 100px;
+		p{
+			font-size: 14px;
+			color: $light-grey;
+		}
+	}
+	.notes-container{
+		max-height: 50px;
+		min-height: 50px;
+	}
+	&:hover{
+		animation-duration: 0.2s;
+		animation-name: slidein;
+		animation-fill-mode: forwards;
 	}
 }
+
 .droppable-container{
 	display: flex;
 	width: 99%;
@@ -39,41 +70,52 @@ $other-color: #d3d3d3;
 }
 
 .Chest{
-	background-color: $chest-color !important;
+	background-color: $chest-color;
 }
 .Tricep{
-	background-color: $tricep-color !important;
+	background-color: $tricep-color;
 }
 .Back{
-	background-color: $back-color !important;
+	background-color: $back-color;
 }
 .Bicep{
-	background-color: $biceps-color !important;
+	background-color: $biceps-color;
 }
 .Legs{
-	background-color: $legs-color !important;
+	background-color: $legs-color;
 }
 .Shoulder{
-	background-color: $shoulder-color !important;
+	background-color: $shoulder-color;
 }
 .Biceps{
-	background-color: $biceps-color !important;
+	background-color: $biceps-color;
 }
 .Cardio{
-	background-color: $cardio-color !important;
+	background-color: $cardio-color;
 }
 .Abs{
-	background-color: $abs-color !important;
+	background-color: $abs-color;
 }
 .Lower-back{
-	background-color: $lower-back !important;
+	background-color: $lower-back;
 }
 .Leg{
-	background-color: $legs-color !important;
+	background-color: $legs-color;
 }
 .Forearm{
-	background-color: $forearm-color !important;
+	background-color: $forearm-color;
 }
 .Other{
-	background-color: $other-color !important;
+	background-color: $other-color;
 }
+
+@keyframes slidein {
+	from {
+		
+	}
+  
+	to {
+		background: #753BBD;
+		transform: scale(1.02);
+	}
+  }

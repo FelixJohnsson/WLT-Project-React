@@ -1,9 +1,9 @@
 .your-workout-card {
   margin: 0 10px;
-  height: 300px;
+  padding: 5px;
+  height: 280px;
   min-width: 200px;
   max-width: 200px;
-  background-color: #fefffe;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -14,14 +14,48 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  border-radius: 10px;
 }
 
-.your-workout-card p {
-  padding: 0 5px;
+.your-workout-card .title-container {
+  max-height: 120px;
+  min-height: 120px;
+}
+
+.your-workout-card .title-container h2 {
+  font-size: 19px;
+  color: #f6f6f7;
+  border-bottom: solid white 1px;
+}
+
+.your-workout-card .title-container p {
+  font-size: 18px;
+  font-weight: 800;
+  color: #f6f6f7;
+}
+
+.your-workout-card .description-container {
+  max-height: 100px;
+  min-height: 100px;
+}
+
+.your-workout-card .description-container p {
+  font-size: 14px;
+  color: #f6f6f7;
+}
+
+.your-workout-card .notes-container {
+  max-height: 50px;
+  min-height: 50px;
+}
+
+.your-workout-card:hover {
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
+  -webkit-animation-name: slidein;
+          animation-name: slidein;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .droppable-container {
@@ -38,54 +72,74 @@
 }
 
 .Chest {
-  background-color: #4be988 !important;
+  background-color: #4be988;
 }
 
 .Tricep {
-  background-color: #fdd462 !important;
+  background-color: #fdd462;
 }
 
 .Back {
-  background-color: #00f8f8 !important;
+  background-color: #00f8f8;
 }
 
 .Bicep {
-  background-color: #d5fffb !important;
+  background-color: #9bc7c2;
 }
 
 .Legs {
-  background-color: #2e21a1 !important;
+  background-color: #2e21a1;
 }
 
 .Shoulder {
-  background-color: #e26868 !important;
+  background-color: #e26868;
 }
 
 .Biceps {
-  background-color: #d5fffb !important;
+  background-color: #9bc7c2;
 }
 
 .Cardio {
-  background-color: #ffa621 !important;
+  background-color: #ffa621;
 }
 
 .Abs {
-  background-color: #ffd6a5 !important;
+  background-color: #ffd6a5;
 }
 
 .Lower-back {
-  background-color: #f098a0 !important;
+  background-color: #f098a0;
 }
 
 .Leg {
-  background-color: #2e21a1 !important;
+  background-color: #2e21a1;
 }
 
 .Forearm {
-  background-color: #c5b49f !important;
+  background-color: #c5b49f;
 }
 
 .Other {
-  background-color: #d3d3d3 !important;
+  background-color: #d3d3d3;
+}
+
+@-webkit-keyframes slidein {
+  from {
+  }
+  to {
+    background: #753BBD;
+    -webkit-transform: scale(1.02);
+            transform: scale(1.02);
+  }
+}
+
+@keyframes slidein {
+  from {
+  }
+  to {
+    background: #753BBD;
+    -webkit-transform: scale(1.02);
+            transform: scale(1.02);
+  }
 }
 /*# sourceMappingURL=YourWorkout.css.map */
