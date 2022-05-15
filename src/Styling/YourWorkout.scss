@@ -1,12 +1,17 @@
 $white-background: #fefffe;
 $light-grey: #f6f6f7;
-$tricep-color: #fdd462;
+
 $chest-color: #4be988;
+$tricep-color: #fdd462;
 $back-color: #00f8f8;
-$legs-color: #2e21a1;
-$shoulder-color: #e26868;
 $biceps-color: #d5fffb;
+$legs-color: #2e21a1;
+$lower-back: #f098a0;
+$forearm-color: #c5b49f;
+$shoulder-color: #e26868;
+$abs-color: #ffd6a5;
 $cardio-color: #ffa621;
+$other-color: #d3d3d3;
 
 .your-workout-card{
 	margin: 0 10px;
@@ -24,29 +29,26 @@ $cardio-color: #ffa621;
 		padding: 0 5px;
 	}
 }
-#your-workouts-container{
-	display: flex;
-	flex-direction: column;
-	overflow-x: scroll;
-	width: 100%;
-}
-.draggable-container{
-	align-items: center;
-}
 .droppable-container{
 	display: flex;
-	width: 100%;
+	width: 99%;
+	margin: 0;
+	padding: 0;
 	align-items: center;
+	overflow-y: hidden;
 }
 
-.Tricep{
-	background-color: $tricep-color !important;
-}
 .Chest{
 	background-color: $chest-color !important;
 }
+.Tricep{
+	background-color: $tricep-color !important;
+}
 .Back{
 	background-color: $back-color !important;
+}
+.Bicep{
+	background-color: $biceps-color !important;
 }
 .Legs{
 	background-color: $legs-color !important;
@@ -59,4 +61,19 @@ $cardio-color: #ffa621;
 }
 .Cardio{
 	background-color: $cardio-color !important;
+}
+.Abs{
+	background-color: $abs-color !important;
+}
+.Lower-back{
+	background-color: $lower-back !important;
+}
+.Leg{
+	background-color: $legs-color !important;
+}
+.Forearm{
+	background-color: $forearm-color !important;
+}
+.Other{
+	background-color: $other-color !important;
 }

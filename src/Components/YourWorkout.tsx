@@ -16,30 +16,28 @@ export const YourWorkout = (props:any) => {
 	}
 
 	return (
-		<div>
+		<div id="your-workouts-container">
 			<h1>Your workouts</h1>
-			<div id="your-workouts-container">
-				<DragDropContext onDragEnd={onDragEnd}>
-					<Droppable droppableId="content" direction="horizontal">
-						{(provided) => (
-							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
-								{workoutOrder.map((workout:Workout, index:number) => {
-									return (
-										<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
-											{(provided) => (
-												<div className="draggable-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-													<WorkoutCard workout={workout} />
-												</div>
-											)}
-										</Draggable>
-									)
-								})}
-								{provided.placeholder}
-							</div>
-						)}
-					</Droppable>
-				</DragDropContext>
-			</div>
+			<DragDropContext onDragEnd={onDragEnd}>
+				<Droppable droppableId="content" direction="horizontal">
+					{(provided) => (
+						<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
+							{workoutOrder.map((workout:Workout, index:number) => {
+								return (
+									<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
+										{(provided) => (
+											<div className="draggable-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+												<WorkoutCard workout={workout} />
+											</div>
+										)}
+									</Draggable>
+								)
+							})}
+							{provided.placeholder}
+						</div>
+					)}
+				</Droppable>
+			</DragDropContext>	
 		</div>
 	)
 }

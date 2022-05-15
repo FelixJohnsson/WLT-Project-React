@@ -114,47 +114,52 @@ type WorkoutDragObject = {
 	return (
 		<div>
 			<h1>{props.dateString}</h1>
+			<Button variant="outlined" endIcon={<SendIcon />} onClick={handleNextWorkoutSubmit}>Submit next workout plan</Button>
 			<div id="your-workouts-container">
 				<DragDropContext onDragEnd={onDragEnd}>
-				<Droppable droppableId="next-workout" direction="horizontal">
-						{(provided) => (
-							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
-								{nextWorkoutOrder.map((workout:Workout, index:number) => {
-									return (
-										<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
-											{(provided) => (
-												<div className="draggable-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-													<WorkoutCard workout={workout} />
-												</div>
-											)}
-										</Draggable>
-									)
-								})}
-								{provided.placeholder}
-							</div>
-						)}
-					</Droppable>
-					<Button variant="outlined" endIcon={<SendIcon />} onClick={handleNextWorkoutSubmit}>Submit next workout plan</Button>
+				<h1>For today</h1>
+				<div className='droppable-divider'>
+					<Droppable droppableId="next-workout" direction="horizontal">
+							{(provided) => (
+								<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
+									{nextWorkoutOrder.map((workout:Workout, index:number) => {
+										return (
+											<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
+												{(provided) => (
+													<div className="draggable-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+														<WorkoutCard workout={workout} />
+													</div>
+												)}
+											</Draggable>
+										)
+									})}
+									{provided.placeholder}
+								</div>
+							)}
+						</Droppable>
+					</div>
 					<h1>All workouts</h1>
-					<Droppable droppableId="all-workouts" direction="horizontal">
-						{(provided) => (
-							<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
-								{allWorkoutsOrder.map((workout:Workout, index:number) => {
-									return (
-										<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
-											{(provided) => (
-												<div className="draggable-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-													<WorkoutCard workout={workout} />
-												</div>
-											)}
-										</Draggable>
-									)
-								})}
-								{provided.placeholder}
-							</div>
-						)}
-					</Droppable>
-
+					<div className='droppable-divider'>
+						<Droppable droppableId="all-workouts" direction="horizontal">
+							
+							{(provided) => (
+								<div className="droppable-container" {...provided.droppableProps} ref={provided.innerRef}>
+									{allWorkoutsOrder.map((workout:Workout, index:number) => {
+										return (
+											<Draggable key={workout.internal_id} draggableId={workout.internal_id} index={index}>
+												{(provided) => (
+													<div className="draggable-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+														<WorkoutCard workout={workout} />
+													</div>
+												)}
+											</Draggable>
+										)
+									})}
+									{provided.placeholder}
+								</div>
+							)}
+						</Droppable>
+					</div>
 				</DragDropContext>
 			</div>
 		</div>

@@ -24,44 +24,33 @@
   padding: 0 5px;
 }
 
-#your-workouts-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  overflow-x: scroll;
-  width: 100%;
-}
-
-.draggable-container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .droppable-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  width: 99%;
+  margin: 0;
+  padding: 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.Tricep {
-  background-color: #fdd462 !important;
+  overflow-y: hidden;
 }
 
 .Chest {
   background-color: #4be988 !important;
 }
 
+.Tricep {
+  background-color: #fdd462 !important;
+}
+
 .Back {
   background-color: #00f8f8 !important;
+}
+
+.Bicep {
+  background-color: #d5fffb !important;
 }
 
 .Legs {
@@ -78,5 +67,25 @@
 
 .Cardio {
   background-color: #ffa621 !important;
+}
+
+.Abs {
+  background-color: #ffd6a5 !important;
+}
+
+.Lower-back {
+  background-color: #f098a0 !important;
+}
+
+.Leg {
+  background-color: #2e21a1 !important;
+}
+
+.Forearm {
+  background-color: #c5b49f !important;
+}
+
+.Other {
+  background-color: #d3d3d3 !important;
 }
 /*# sourceMappingURL=YourWorkout.css.map */

@@ -51,6 +51,11 @@ export const NewWorkout = (props:any) => {
 	const handleChange = (event: any) => {
 		setCategory(event.target.value)
 	}
+	
+	const clearInput = () => {
+		setExercise('')
+		setDescription('')
+	}
 
 	const handleSubmit = (event: any) => {
 		const newWorkoutData = {
@@ -65,8 +70,6 @@ export const NewWorkout = (props:any) => {
 			}
 		}
 
-		console.log(newWorkoutData)
-
 		fetch(`${serverURL}/save_workout`, {
 			method: 'POST',
 			headers: {
@@ -74,6 +77,7 @@ export const NewWorkout = (props:any) => {
 			},
 			body: JSON.stringify(newWorkoutData)
 		})
+		.finally(() => {clearInput()})
 	}
 
 	return (
@@ -81,8 +85,8 @@ export const NewWorkout = (props:any) => {
 			<h1>New workout</h1>
 			<Card className="new-workout-card">
 				<div className="new-workout-card-name-description">
-					<Input fullWidth={false} margin={'dense'} maxRows="1" placeholder={'Name'} onChange={(e) => setExercise(e.target.value)}/>
-					<Input fullWidth={false} margin={'dense'} maxRows="1" placeholder={'Description'} onChange={(e) => setDescription(e.target.value)}/>
+					<Input fullWidth={false} margin={'dense'} maxRows="1" placeholder={'Name'} onChange={(e) => setExercise(e.target.value)} value={exercise} />
+					<Input fullWidth={false} margin={'dense'} maxRows="1" placeholder={'Description'} onChange={(e) => setDescription(e.target.value)} value={description} />
 					<InputLabel id="demo-simple-select-label">Category</InputLabel>
 					<Select
 						labelId="demo-simple-select-label"
