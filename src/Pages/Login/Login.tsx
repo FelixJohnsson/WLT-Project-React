@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom"
 import { Input } from '@mui/material'
 import Button from '@mui/material/Button'
@@ -40,6 +40,19 @@ export const Login = () => {
 		})
 		.catch(err => console.log(err))
 	}
+
+	useEffect(() => {
+		const listener = (event:any) => {
+		  if (event.code === "Enter" || event.code === "NumpadEnter") {
+			event.preventDefault();
+			handleLogin()
+		  }
+		};
+		document.addEventListener("keydown", listener);
+		return () => {
+		  document.removeEventListener("keydown", listener);
+		};
+	  }, [username, password]);
 
 	return (
 		<div id="app-login">
